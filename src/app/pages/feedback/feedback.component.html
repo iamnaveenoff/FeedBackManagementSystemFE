@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-md-auto">
-      <img src="./assets/img/brand/red.png" class="navbar-brand-img" alt="...">
+      <img src="./assets/img/brand/Feedback.png" class="navbar-brand-img" alt="...">
     </div>
   </div>
   <div class="feedback-form">
@@ -16,6 +16,25 @@
       </div>
       <div class="form-group">
         <input type="text" class="form-control" id="name" placeholder="Name (Optional)">
+      </div>
+      <div class="form-group">
+        <tag-input [ngModel]="['Feedback']"
+                   [theme]="'dark'"
+                   [maxItems]="1"
+                   [placeholder] ="'Select The Category'"
+                   [secondaryPlaceholder] ="'Select The Category'"
+                   [onlyFromAutocomplete]="true">
+          <tag-input-dropdown [showDropdownIfEmpty]="true"
+                              [dynamicUpdate]="false"
+                              [focusFirstElement]="true"
+                              [displayBy]="'value'"
+                              [identifyBy]="'id'"
+                              [autocompleteItems]="autocompleteItemsAsObjects">
+            <ng-template let-item="item" let-index="index">
+              {{ item.value }}
+            </ng-template>
+          </tag-input-dropdown>
+        </tag-input>
       </div>
       <button type="button" class="btn btn-success">Submit</button>
     </form>

@@ -13,6 +13,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import {FeedbackComponent} from './pages/feedback/feedback.component';
+import {TagInputModule} from 'ngx-chips';
+import {FeedBackApiService} from './services/api.service';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import {FeedbackComponent} from './pages/feedback/feedback.component';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TagInputModule
   ],
   declarations: [
     AppComponent,
@@ -31,7 +34,7 @@ import {FeedbackComponent} from './pages/feedback/feedback.component';
     AdminLayoutComponent,
     AuthLayoutComponent
   ],
-  providers: [],
+  providers: [FeedBackApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

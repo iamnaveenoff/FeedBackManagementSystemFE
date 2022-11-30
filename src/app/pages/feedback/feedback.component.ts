@@ -7,11 +7,16 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class FeedbackComponent implements OnInit, OnDestroy {
   constructor() {}
+  autocompleteItemsAsObjects = [
+    'Appreciation',
+    'Escalation',
+    'Feedback',
+    'Others'
+  ];
 
   ngOnInit() {
     console.log('naveen');
   }
   ngOnDestroy() {
   }
-
 }
