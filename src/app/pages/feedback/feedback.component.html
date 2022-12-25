@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-md-auto">
@@ -6,37 +5,38 @@
     </div>
   </div>
   <div class="feedback-form">
-    <form>
+    <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col">
           <div class="form-group">
-            <textarea class="form-control" id="feedback" rows="3" placeholder="Write your feedback here ..."></textarea>
+            <textarea class="form-control" formControlName="feedback" id="feedback" rows="4"
+              [ngClass]="{ 'is-invalid': submitted && f.feedback.errors }"
+              placeholder="Write your feedback here ..."></textarea>
+            <div *ngIf="submitted && f.feedback.errors" class="invalid-feedback">
+              <div *ngIf="f.feedback.errors.required">Feedback is required</div>
+            </div>
           </div>
         </div>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="name" placeholder="Name (Optional)">
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name (Optional)">
       </div>
       <div class="form-group">
-        <tag-input [ngModel]="['Feedback']"
-                   [theme]="'dark'"
-                   [maxItems]="1"
-                   [placeholder] ="'Select The Category'"
-                   [secondaryPlaceholder] ="'Select The Category'"
-                   [onlyFromAutocomplete]="true">
-          <tag-input-dropdown [showDropdownIfEmpty]="true"
-                              [dynamicUpdate]="false"
-                              [focusFirstElement]="true"
-                              [displayBy]="'value'"
-                              [identifyBy]="'id'"
-                              [autocompleteItems]="autocompleteItemsAsObjects">
+        <tag-input [ngModel]="['Feedback']" [theme]="'dark'" [maxItems]="1" [placeholder]="'Select The Category'"
+          [secondaryPlaceholder]="'Select The Category'" [onlyFromAutocomplete]="true" formControlName="category"
+          [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+          <tag-input-dropdown [showDropdownIfEmpty]="true" [dynamicUpdate]="false" [focusFirstElement]="true"
+            [displayBy]="'value'" [identifyBy]="'id'" [autocompleteItems]="autocompleteItemsAsObjects">
             <ng-template let-item="item" let-index="index">
               {{ item.value }}
             </ng-template>
           </tag-input-dropdown>
         </tag-input>
+        <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+          <div *ngIf="f.category.errors.required">Category is required</div>
+        </div>
       </div>
-      <button type="button" class="btn btn-success">Submit</button>
+      <button class="btn btn-success">Submit</button>
     </form>
   </div>
 
