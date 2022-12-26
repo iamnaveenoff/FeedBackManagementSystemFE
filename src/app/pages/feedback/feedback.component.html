@@ -22,7 +22,7 @@
         <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name (Optional)">
       </div>
       <div class="form-group">
-        <tag-input [ngModel]="['Feedback']" [theme]="'dark'" [maxItems]="1" [placeholder]="'Select The Category'"
+        <tag-input [theme]="'dark'" [maxItems]="1" [placeholder]="'Select The Category'" [identifyBy]="'id'"
           [secondaryPlaceholder]="'Select The Category'" [onlyFromAutocomplete]="true" formControlName="category"
           [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
           <tag-input-dropdown [showDropdownIfEmpty]="true" [dynamicUpdate]="false" [focusFirstElement]="true"
